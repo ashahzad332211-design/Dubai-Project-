@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Desert Adventure</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("Desertbsnner.jpeg") center/cover no-repeat fixed;
+  color: white;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+section {
+  background: rgba(0,0,0,0.55);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+input, select, button, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: orange;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  grid-gap: 15px;
+}
+
+.gallery div {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+#privacyBox {
+  display: none;
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="overlay">
+<div class="container">
+
+<h1>Experience UAE Desert Adventures</h1>
+<p>Book your thrilling desert ride today</p>
+
+<section>
+<h2>Book Your Ride</h2>
+
+<form id="bookingForm">
+
+<label>Choose Activity</label>
+<select id="activity" required>
+  <option value="">Select an option</option>
+  <option value="canam">Can-Am Ride</option>
+  <option value="ktm">KTM Adventure</option>
+  <option value="automatic-bike">Automatic Bike Ride</option>
+</select>
+
+<label>Ride Date</label>
+<input type="date" id="rideDate" required>
+
+<label>Ride Time</label>
+<input type="time" id="rideTime" required>
+
+<label>Your Name</label>
+<input type="text" id="name" required>
+
+<label>Phone Number</label>
+<input type="tel" id="phone" required>
+
+<label>Email</label>
+<input type="email" id="email" required>
+
+<label>Payment Method</label>
+<select id="payment" required>
+  <option value="">Select payment</option>
+  <option value="card">Credit / Debit Card</option>
+  <option value="applepay">Apple Pay</option>
+  <option value="googlepay">Google Pay</option>
+  <option value="bank">Online Bank Transfer</option>
+</select>
+
+<button type="submit">Submit Booking</button>
+
+</form>
+</section>
+
+<section>
+<h2>Adventure Gallery</h2>
+
+<div class="gallery">
+  <div>
+    <img src="Canan.jpg">
+    <p>Can-Am Ride</p>
+  </div>
+
+  <div>
+    <img src="KTM.jpg">
+    <p>KTM Adventure</p>
+  </div>
+
+  <div>
+    <img src="AB.jpg">
+    <p>Automatic Bike</p>
+  </div>
+</div>
+</section>
+
+<section>
+<a href="#" onclick="showPrivacy()">Privacy Policy</a>
+<div id="privacyBox">
+  <h3>Privacy Policy</h3>
+  <p>We collect only the details needed to confirm your booking and contact you. Your information is never shared without permission.</p>
+</div>
+</section>
+
+</div>
+</div>
+
+<script>
+function showPrivacy(){
+  document.getElementById("privacyBox").style.display="block";
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const payment = document.getElementById("payment").value;
+
+  if(payment === "card") window.location.href = "https://checkout.stripe.com/";
+  if(payment === "applepay") window.location.href = "https://apple.com/apple-pay/";
+  if(payment === "googlepay") window.location.href = "https://pay.google.com/";
+  if(payment === "bank") window.location.href = "https://yourbankwebsite.com/";
+
+  alert("Booking submitted! You’ll be redirected to payment.");
+});
+</script>
+
+</body>
+</html>
