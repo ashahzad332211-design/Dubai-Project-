@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desert Adventure UAE</title>
+<style>
+  body, html {margin:0; padding:0; font-family: Arial, sans-serif;}
+
+  /* Hero */
+  .hero {
+    background: url('desertbsnner.jpeg') no-repeat center center/cover;
+    height: 100vh; position: relative; display:flex;
+    justify-content:center; align-items:center; color:white; text-align:center;
+  }
+  .hero::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4);}
+  .hero-content {position: relative; z-index:1;}
+  .hero h1 {font-size:3em; text-shadow:2px 2px 8px rgba(0,0,0,0.7);}
+  .hero button {padding:15px 40px; font-size:1.2em; background-color:#ff7f00; border:none; color:white; cursor:pointer; border-radius:5px; box-shadow:0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s, background-color 0.3s;}
+  .hero button:hover {transform:scale(1.1); background-color:#e66f00;}
+
+  /* Booking Form */
+  .booking-section {padding:50px 20px; background-color:#f9f9f9; display:flex; justify-content:center;}
+  .booking-form {max-width:500px; width:100%; background:white; padding:30px; border-radius:10px; box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+  .booking-form h2 {text-align:center; margin-bottom:30px; color:#333;}
+  .booking-form label {display:block; margin-bottom:5px; font-weight:bold; color:#555;}
+  .booking-form input, .booking-form select {width:100%; padding:12px; margin-bottom:20px; border-radius:5px; border:1px solid #ccc; box-sizing:border-box; font-size:1em;}
+  .booking-form button {width:100%; padding:15px; background-color:#ff7f00; color:white; font-size:1.1em; border:none; border-radius:5px; cursor:pointer; transition: background-color 0.3s, transform 0.3s;}
+  .booking-form button:hover {background-color:#e66f00; transform:scale(1.05);}
+
+  /* Gallery */
+  .gallery-section {padding:50px 20px; background-color:#fff; text-align:center;}
+  .gallery-section h2 {color:#333; margin-bottom:40px;}
+  .gallery-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; max-width:1200px; margin:0 auto;}
+  .gallery-item {border-radius:10px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; cursor:pointer;}
+  .gallery-item img {width:100%; height:200px; object-fit:cover; display:block;}
+  .gallery-item:hover {transform:scale(1.05);}
+  .gallery-item h3 {padding:10px; margin:0; background-color:#ff7f00; color:white; text-align:center;}
+
+  /* Footer & Privacy */
+  .footer {text-align:center; padding:20px; background-color:#333; color:white;}
+  .footer a {color:#ff7f00; text-decoration:none; cursor:pointer;}
+  .modal {display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color: rgba(0,0,0,0.5);}
+  .modal-content {background:white; margin:10% auto; padding:20px; border-radius:10px; width:90%; max-width:600px; text-align:left;}
+  .close {color:#333; float:right; font-size:28px; font-weight:bold; cursor:pointer;}
+  .close:hover {color:#ff7f00;}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Experience UAE Desert Adventures</h1>
+    <button onclick="document.getElementById('bookingForm').scrollIntoView({behavior:'smooth'})">Book Your Ride Now</button>
+  </div>
+</div>
+
+<!-- Booking Form -->
+<div class="booking-section" id="bookingForm">
+  <form class="booking-form" id="bookingFormElement" action="https://formspree.io/f/yourformid" method="POST">
+    <h2>Book Your Adventure</h2>
+    
+    <label for="activity">Activity / Service</label>
+    <select id="activity" name="activity" required>
+      <option value="">Select Adventure</option>
+      <option value="dune-buggy">Dune Buggy Ride</option>
+      <option value="desert-safari">Desert Safari SUV</option>
+      <option value="vip-ride">VIP Desert Ride</option>
+    </select>
+    
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="e.g. +971 50 123 4567" required>
+    
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    
+    <label for="payment">Payment Method</label>
+    <select id="payment" name="payment" required>
+      <option value="">Select Payment Method</option>
+      <option value="credit-card">Credit / Debit Card</option>
+      <option value="cash">Cash on Arrival</option>
+      <option value="apple-pay">Apple Pay</option>
+      <option value="samsung-pay">Samsung Pay</option>
+      <option value="bank-transfer">Bank Transfer</option>
+      <option value="paypal">PayPal</option>
+    </select>
+    
+    <button type="submit">Submit Booking</button>
+  </form>
+</div>
+
+<!-- Gallery -->
+<div class="gallery-section">
+  <h2>Our Adventure Rides</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="dune-buggy.jpg" alt="Dune Buggy Ride">
+      <h3>Dune Buggy Ride</h3>
+    </div>
+    <div class="gallery-item">
+      <img src="desert-safari.jpg" alt="Desert Safari SUV">
+      <h3>Desert Safari SUV</h3>
+    </div>
+    <div class="gallery-item">
+      <img src="vip-ride.jpg" alt="VIP Desert Ride">
+      <h3>VIP Desert Ride</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Footer / Privacy -->
+<div class="footer">
+  <p>&copy; 2025 Desert Adventure UAE | <a onclick="openPrivacyPolicy()">Privacy Policy</a></p>
+</div>
+
+<div id="privacyModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePrivacyPolicy()">&times;</span>
+    <h2>Privacy Policy</h2>
+    <p>
+      We value your privacy. All personal information collected during booking is confidential and used only for processing your adventure bookings.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Form submission
+  document.getElementById("bookingFormElement").addEventListener("submit", function(e){
+    e.preventDefault(); // Prevent default
+    
+    // Collect data
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var activity = document.getElementById("activity").value;
+    var payment = document.getElementById("payment").value;
+    
+    // WhatsApp notification
+    var whatsappMsg = encodeURIComponent(
+      "New Booking:\nName: "+name+"\nPhone: "+phone+"\nEmail: "+email+"\nActivity: "+activity+"\nPayment: "+payment
+    );
+    window.open("https://wa.me/971XXXXXXXXX?text=" + whatsappMsg, "_blank"); // replace with your WhatsApp number
+    
+    // Payment redirect
+    switch(payment) {
+      case "credit-card": window.location.href="https://www.yourbank.com/creditcard"; break;
+      case "cash": alert("You chose Cash on Arrival. Please pay at the venue."); break;
+      case "apple-pay": window.location.href="https://www.apple.com/apple-pay/"; break;
+      case "samsung-pay": window.location.href="https://www.samsung.com/ae/samsung-pay/"; break;
+      case "bank-transfer": window.location.href="https://www.yourbank.com/transfer"; break;
+      case "paypal": window.location.href="https://www.paypal.com/ae/home"; break;
+      default: alert("Please select a payment method.");
+    }
+    
+    // Submit to Formspree for email notification
+    this.submit();
+  });
+
+  // Privacy Policy Modal
+  function openPrivacyPolicy(){document.getElementById("privacyModal").style.display="block";}
+  function closePrivacyPolicy(){document.getElementById("privacyModal").style.display="none";}
+  window.onclick=function(event){if(event.target==document.getElementById("privacyModal")) closePrivacyPolicy();}
+</script>
+
+</body>
+</html>
