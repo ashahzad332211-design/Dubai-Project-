@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DZ Cars Adventure</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background: url('Desertbsnner.jpeg') center/cover no-repeat fixed;
+}
+
+/* ⭐ ONLY NEW STYLE ADDED */
+.logo {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 120px;
+  height: auto;
+  z-index: 1000;
+}
+
+header {
+  background: rgba(0,0,0,0.55);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 12px;
+  text-decoration: none;
+}
+
+section {
+  padding: 25px;
+  background: rgba(0,0,0,0.55);
+  margin: 20px;
+  border-radius: 10px;
+}
+
+input, select, button, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+button {
+  background: #ff8800;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" alt="DZ Car Adventure" class="logo">
+
+  <h1>DZ Car Adventure UAE</h1>
+  <p>Book thrilling desert rides online</p>
+
+  <nav>
+    <a href="#booking">Booking</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#privacy">Privacy Policy</a>
+  </nav>
+</header>
+
+<section id="booking">
+  <h2>Book Your Adventure</h2>
+
+  <p><strong>Note:</strong> After submitting, you will be redirected to WhatsApp to confirm your booking with our team.</p>
+
+  <form id="bookingForm">
+
+    <label>Choose Activity</label>
+    <select id="activity">
+      <option value="Can-Am" data-price="600">Can-Am</option>
+      <option value="KTM" data-price="450">KTM</option>
+      <option value="Automatic Bike" data-price="300">Automatic Bike</option>
+    </select>
+
+    <label>Number of Participants</label>
+    <input type="number" id="people" min="1" value="1">
+
+    <label>Date</label>
+    <input type="date" id="date">
+
+    <label>Time</label>
+    <input type="time" id="time">
+
+    <label>Your Name</label>
+    <input type="text" id="name">
+
+    <label>Phone</label>
+    <input type="tel" id="phone">
+
+    <label>Email</label>
+    <input type="email" id="email">
+
+    <label>Payment Method</label>
+    <select id="payment">
+      <option>Credit/Debit Card</option>
+      <option>Apple Pay</option>
+      <option>Google Pay</option>
+      <option>Bank Transfer</option>
+      <option>Cash on Arrival</option>
+    </select>
+
+    <p id="totalPrice"><strong>Total Price:</strong> AED 600</p>
+
+    <button type="submit">Submit Booking</button>
+  </form>
+</section>
+
+<button onclick="window.location.href='rides.html'">View Rides & Services</button>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+  <p>Tap below to see our rides, team and adventure shots.</p>
+  <a href="gallery.html" style="color:#ffd27a;">Open Gallery</a>
+</section>
+
+<section id="privacy">
+  <h2>Privacy Policy</h2>
+  <p>We only collect the details needed to manage your booking. Your information is kept secure and never shared without permission.</p>
+</section>
+
+<script>
+const activity = document.getElementById('activity');
+const people = document.getElementById('people');
+const totalPrice = document.getElementById('totalPrice');
+const date = document.getElementById('date');
+const time = document.getElementById('time');
+const nameField = document.getElementById('name');
+const phone = document.getElementById('phone');
+const email = document.getElementById('email');
+const payment = document.getElementById('payment');
+
+function updatePrice() {
+  const base = Number(activity.selectedOptions[0].dataset.price);
+  const count = Number(people.value || 1);
+  totalPrice.textContent = "Total Price: AED " + (base * count);
+}
+
+activity.addEventListener('change', updatePrice);
+people.addEventListener('input', updatePrice);
+updatePrice();
+
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const msg = encodeURIComponent(
+    "🛵 New Booking Request 🏜️\n" +
+    "Name: " + nameField.value + "\n" +
+    "Phone: " + phone.value + "\n" +
+    "Email: " + email.value + "\n" +
+    "Activity: " + activity.value + "\n" +
+    "Number of Participants: " + people.value + "\n" +
+    totalPrice.textContent + "\n" +
+    "Date: " + date.value + "\n" +
+    "Time: " + time.value + "\n" +
+    "Payment Method: " + payment.value
+  );
+
+  // ✅ Replace with your WhatsApp number
+  window.location.href = "https://wa.me/971565212443?text=" + msg;
+});
+</script>
+
+</body>
+</html>
