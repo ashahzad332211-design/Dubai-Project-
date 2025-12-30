@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DZ Cars Adventure UAE</title>
+
+<!-- Google Fonts for modern look -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* ===== Header ===== */
+header {
+  position: relative;
+  background: url('Desertbsnner.jpeg') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5); /* dark overlay so text is visible */
+}
+
+header .logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  z-index: 2;
+}
+
+header h1, header p, header .btn {
+  z-index: 2;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+header p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+header .btn {
+  background: #ff8800;
+  padding: 15px 35px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* ===== Navigation ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 0;
+  z-index: 100;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 60px 20px;
+}
+
+section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff8800;
+}
+
+/* ===== Booking Form ===== */
+.booking-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.booking-card input, 
+.booking-card select, 
+.booking-card textarea,
+.booking-card button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.booking-card button {
+  background: #ff8800;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Button for viewing rides */
+.booking-card .view-rides-btn {
+  background: #28a745;
+  color: #fff;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* ===== Gallery ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 15px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  min-height: 150px; /* ensures placeholder area */
+  background: #ddd; /* placeholder if image missing */
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Footer / Privacy ===== */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width:768px){
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav>
+  <a href="#booking">Booking</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#privacy">Privacy Policy</a>
+</nav>
+
+<!-- ===== Hero Banner ===== -->
+<header>
+  <img src="logo.png" alt="DZ Car Adventure" class="logo" onerror="this.style.display='none'">
+  <h1>DZ Car Adventure UAE</h1>
+  <p>Thrilling Desert & Dune Buggy Adventures</p>
+  <a href="#booking" class="btn">Book Your Ride</a>
+</header>
+
+<!-- ===== Booking Section ===== -->
+<section id="booking">
+  <h2>Book Your Adventure</h2>
+  <div class="booking-card">
+    <p><strong>Note:</strong> Please fill in your details accurately. Our team will contact you to confirm your booking.</p>
+    <form id="bookingForm">
+      <label>Choose Activity</label>
+      <select id="activity">
+        <option value="Can-Am" data-price="600">Can-Am</option>
+        <option value="KTM" data-price="450">KTM</option>
+        <option value="Automatic Bike" data-price="300">Automatic Bike</option>
+      </select>
+
+      <label>Number of Participants</label>
+      <input type="number" id="people" min="1" value="1">
+
+      <label>Date</label>
+      <input type="date" id="date">
+
+      <label>Time</label>
+      <input type="time" id="time">
+
+      <label>Your Name</label>
+      <input type="text" id="name">
+
+      <label>Phone</label>
+      <input type="tel" id="phone">
+
+      <label>Email</label>
+      <input type="email" id="email">
+
+      <p id="totalPrice"><strong>Total Price:</strong> AED 600</p>
+
+      <button type="submit">Submit Booking</button>
+    </form>
+
+    <!-- Button to view all rides and prices -->
+    <button class="view-rides-btn" onclick="window.location.href='rides.html'">View All Rides & Prices</button>
+  </div>
+</section>
+
+<!-- ===== Gallery Section ===== -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="gallery1.jpg" alt="Ride 1" onerror="this.style.background='#ccc'; this.src=''">
+    <img src="gallery2.jpg" alt="Ride 2" onerror="this.style.background='#ccc'; this.src=''">
+    <img src="gallery3.jpg" alt="Ride 3" onerror="this.style.background='#ccc'; this.src=''">
+    <img src="gallery4.jpg" alt="Ride 4" onerror="this.style.background='#ccc'; this.src=''">
+  </div>
+</section>
+
+<!-- ===== Privacy Section ===== -->
+<section id="privacy">
+  <h2>Privacy Policy</h2>
+  <p>We only collect the details needed to manage your booking. Your information is kept secure and never shared without permission.</p>
+</section>
+
+<script>
+const activity = document.getElementById('activity');
+const people = document.getElementById('people');
+const totalPrice = document.getElementById('totalPrice');
+const date = document.getElementById('date');
+const time = document.getElementById('time');
+const nameField = document.getElementById('name');
+const phone = document.getElementById('phone');
+const email = document.getElementById('email');
+
+// Update total price
+function updatePrice() {
+  const base = Number(activity.selectedOptions[0].dataset.price);
+  const count = Number(people.value || 1);
+  totalPrice.textContent = "Total Price: AED " + (base * count);
+}
+activity.addEventListener('change', updatePrice);
+people.addEventListener('input', updatePrice);
+updatePrice();
+
+// Submit booking to WhatsApp
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const msg = encodeURIComponent(
+    "🛵 New Booking Request 🏜️\n" +
+    "Name: " + nameField.value + "\n" +
+    "Phone: " + phone.value + "\n" +
+    "Email: " + email.value + "\n" +
+    "Activity: " + activity.value + "\n" +
+    "Number of Participants: " + people.value + "\n" +
+    totalPrice.textContent + "\n" +
+    "Date: " + date.value + "\n" +
+    "Time: " + time.value
+  );
+  window.open("https://wa.me/971565212443?text=" + msg, "_blank");
+});
+</script>
+
+</body>
+</html>
