@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DZ Car Adventure Gallery</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background-color:#111;
+  color:#fff;
+  text-align:center;
+}
+
+h1 {margin-top:30px;}
+
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+  max-width:1200px;
+  margin:50px auto;
+}
+
+.gallery-grid img {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform:scale(1.05);
+}
+
+.back-btn {
+  display:inline-block;
+  margin:20px auto;
+  padding:10px 25px;
+  background:#ff7f00;
+  color:#fff;
+  text-decoration:none;
+  border-radius:5px;
+}
+.back-btn:hover {
+  background:#e66f00;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Our Adventure Gallery</h1>
+
+<div class="gallery-grid">
+  <img src="gallery1.jpg" alt="Team Member">
+  <img src="gallery2.jpg" alt="Can-Am Ride">
+  <img src="gallery3.jpg" alt="KTM Ride">
+  <img src="gallery4.jpg" alt="Automatic Bike">
+  <img src="gallery5.jpg" alt="Desert Adventure">
+  <img src="gallery6.jpg" alt="Company Fleet">
+</div>
+
+<a href="index.html" class="back-btn">Back to Home</a>
+
+</body>
+</html>
